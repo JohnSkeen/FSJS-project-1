@@ -13,8 +13,8 @@ are set intervals if the user does not click the show another quote button.
 
 // Two constants to set intervals to change the quote and background color
 
-const quoteRotate = window.setInterval(printQuote, 10000);
-const colorRotate = window.setInterval(backgroundColor, 10000);
+const quoteRotate = setInterval(printQuote, 10000);
+const colorRotate = setInterval(backgroundColor, 10000);
 
 
 // Array of selected quotes, sources, year, citation, and handles in objects
@@ -22,7 +22,7 @@ const colorRotate = window.setInterval(backgroundColor, 10000);
 let quotes = [
   {
     quote: "What one programmer can do in one month, two programmers can do in two months.",
-    source: "Fred Brooks",
+    source: "Fred Brooks"
   },
   {
     quote: "We build our computer (systems) the way we build our cities: over time, without a plan, on top of ruins.",
@@ -50,7 +50,7 @@ let quotes = [
 // function to retrieve and return a random quote
 
 function getRandomQuote(array) {
-  let randomNumber = Math.random() * 5;
+  let randomNumber = Math.random() * array.length;
   randomNumber = Math.ceil(randomNumber) - 1;
   return array[randomNumber];
 }
@@ -60,24 +60,24 @@ function getRandomQuote(array) {
 function printQuote() {
   let randomQuote = getRandomQuote(quotes);
   let htmlString = ``;
-  htmlString += `<p class="quote">${randomQuote.quote}</p>`
-  htmlString += `<p class="source">${randomQuote.source}`
+  htmlString += `<p class="quote">${randomQuote.quote}</p>`;
+  htmlString += `<p class="source">${randomQuote.source}`;
 
   // if statement to identify if quote object has citation
   if (typeof(randomQuote.citation) !== "undefined") {
-    htmlString += `<span class="citation">${randomQuote.citation}</span>`
+    htmlString += `<span class="citation">${randomQuote.citation}</span>`;
   }
 
   // if statement to identify if quote object has handle
   if (typeof(randomQuote.handle) !== "undefined") {
-    htmlString += `<span class="handle">${randomQuote.handle}</span>`
+    htmlString += `<span class="handle">${randomQuote.handle}</span>`;
   }
 
   // if statement to identify if quote object has year
   if (typeof(randomQuote.year) !== "undefined") {
-    htmlString += `<span class="year">${randomQuote.year}</span>`
+    htmlString += `<span class="year">${randomQuote.year}</span>`;
   }
-  htmlString += `</p>`
+  htmlString += `</p>`;
 
   // grabbing ID quote-box and printing quote to the dom
   document.getElementById("quote-box").innerHTML = htmlString;
